@@ -10,7 +10,8 @@ defmodule ActivityLogger.Application do
     DeferredConfig.populate(:activity_logger)
 
     children = [
-      supervisor(ActivityLogger.Repo, [])
+      supervisor(ActivityLogger.Repo, []),
+      supervisor(ActivityLogger.Vault, [])
     ]
 
     opts = [strategy: :one_for_one, name: ActivityLogger.Supervisor]
